@@ -12,5 +12,5 @@ Currently, two official plugins are available:
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
 
-# real-estate
+# Real Estate Website
 A responsive real estate web app built with React, JS, Tailwind, Material-UI, shadcn/ui, and Supabase. Features clean UI, property listings, desktop & mobile navigation, mobile drawer menu, login, and routing. Great for learning React and responsive design.
