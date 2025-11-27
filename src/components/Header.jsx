@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { AppBar, Toolbar, IconButton, Drawer, Box, Button, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+   const navigate = useNavigate();
 
   const navLinks = ["Home", "Testmonials", "Contact", "About"];
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element){
+     element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <>
@@ -13,7 +21,7 @@ export default function Header() {
       <AppBar position="static" sx={{ background: "#fff", paddingY: 1 }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           {/* Logo */}
-          <Typography variant="h5" sx={{ fontWeight: "bold", letterSpacing: 1, color: "var(--primary)", display: "flex", alignItems: "center" }}>
+          <Typography onClick={() => navigate("/")}  variant="h5" sx={{ fontWeight: "bold", letterSpacing: 1, color: "var(--primary)", display: "flex", alignItems: "center" }}>
             <img className="w-20 h-20 object-contain" src="/Untitled.png" alt="" />
             UrbanGate
           </Typography>
@@ -43,7 +51,9 @@ export default function Header() {
                   "&:hover::after": {
                     width: "100%",
                   },
-                }}>
+                }}
+                onClick={() => scrollToSection(item)}
+                >
                 {item}
               </Button>
             ))}
@@ -56,6 +66,7 @@ export default function Header() {
                 fontWeight: "bold",
                 "&:hover": { background: "var(--primary)" },
               }}
+              onClick={() => navigate("/login") }
             >
               Login
             </Button>
@@ -73,6 +84,7 @@ export default function Header() {
                 fontWeight: "bold",
                 "&:hover": { background: "var(--primary)" },
               }}
+              onClick={() => navigate("/login") }
             >
               Login
             </Button>
