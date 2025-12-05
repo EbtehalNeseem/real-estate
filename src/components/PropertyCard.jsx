@@ -8,7 +8,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import { addToWishlist, removeFromWishlist } from "../js/wishlist";
-import { useWishlist } from "../hooks/useWishlist";
+import  useWishlist  from "../hooks/useWishlist";
 
 // ----------- Expand Icon -----------
 const ExpandMore = styled((props) => {

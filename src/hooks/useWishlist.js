@@ -25,7 +25,6 @@ export default function useWishlist() {
 
   const removeItem = async (wishlistId) => {
     await removeFromWishlist(wishlistId);
-    // بعد الحذف نحدث الـ state
     setWishlistItems((prev) => prev.filter((item) => item.wishlistId !== wishlistId));
   };
 
