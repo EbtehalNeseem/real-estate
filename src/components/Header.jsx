@@ -10,13 +10,17 @@ export default function Header() {
    const navigate = useNavigate();
     const colorMode = useContext(ColorModeContext);
 
-  const navLinks = ["Home", "Testmonials", "Contact", "Gallery", "About"];
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element){
-     element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const navLinks = ["Home", "Properties", "Wishlist", "Contact","About"];
+//   const scrollToSection = (id) => {
+//   if (window.location.pathname !== "/") {
+//     navigate("/", { state: { scrollTo: id } });
+//   } else {
+//     const element = document.getElementById(id);
+//     if (element) {
+//       element.scrollIntoView({ behavior: "smooth" });
+//     }
+//   }
+// };
 
   return (
     <div className="h-20">
@@ -55,7 +59,7 @@ export default function Header() {
                     width: "100%",
                   },
                 }}
-                onClick={() => scrollToSection(item)}
+                onClick={() => navigate("/" + item)}
                 >
                 {item}
               </Button>

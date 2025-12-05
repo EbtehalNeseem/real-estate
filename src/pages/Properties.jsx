@@ -24,8 +24,8 @@ export default function Properties() {
 
   return (
     <Box sx={{ padding: "50px 5%" }}>
-      <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>
-        Featured Listings
+      <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3, color:"var(--primary)"}}>
+        Properties List
       </Typography>
 
       {loading ? (

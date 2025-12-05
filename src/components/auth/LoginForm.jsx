@@ -1,0 +1,76 @@
+import { motion } from "framer-motion";
+
+export default function LoginForm({
+  loginData,
+  setLoginData,
+  errors,
+  clearError,
+  handleLoginSubmit,
+  setIsLogin,
+  loading,
+}) {
+  return (
+    <motion.form
+      key="login-form"
+      initial={{ opacity: 0, x: 60 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -60 }}
+      transition={{ duration: 0.4 }}
+      className="flex flex-col gap-4"
+      onSubmit={handleLoginSubmit}
+    >
+      {/* Email */}
+      <input
+        type="email"
+        placeholder="Email"
+        value={loginData.email}
+        className={`p-3 rounded bg-white shadow w-full ${
+          errors.email ? "border border-red-500" : ""
+        }`}
+        onChange={(e) => {
+          setLoginData({ ...loginData, email: e.target.value });
+          clearError("email");
+        }}
+      />
+      {errors.email && (
+        <p className="text-red-500 text-sm">{errors.email}</p>
+      )}
+
+      {/* Password */}
+      <input
+        type="password"
+        placeholder="Password"
+        value={loginData.password}
+        className={`p-3 rounded bg-white shadow w-full ${
+          errors.password ? "border border-red-500" : ""
+        }`}
+        onChange={(e) => {
+          setLoginData({ ...loginData, password: e.target.value });
+          clearError("password");
+        }}
+      />
+      {errors.password && (
+        <p className="text-red-500 text-sm">{errors.password}</p>
+      )}
+
+      {/* Form error */}
+      {errors.form && (
+        <p className="text-red-500 text-sm mt-1">{errors.form}</p>
+      )}
+
+      <button className="mt-4 p-3 rounded bg-[var(--primary)] text-[var(--beige)] hover:bg-[var(--primary)]/70 font-bold">
+        {loading ? "Loading..." : "Login"}
+      </button>
+
+      <p className="text-[var(--primary)] mt-3">
+        Don't have an account?
+        <span
+          className="cursor-pointer font-bold ml-1 hover:text-[var(--light)]"
+          onClick={() => setIsLogin(false)}
+        >
+          Register
+        </span>
+      </p>
+    </motion.form>
+  );
+}

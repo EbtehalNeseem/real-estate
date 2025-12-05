@@ -8,9 +8,9 @@ export default function Testimonials() {
         What Our Clients Say
       </Typography>
 
-      <Grid container spacing={5}>
+      <Grid container spacing={3}>
         {[1, 2, 3].map((i) => (
-          <Grid  sx={{xs: 12 }} key={i}>
+          <Grid sx={{xs: 12 , lg: 4 , md: 4 }} key={i}>
             <TestimonialCard
               text="Great experience! They helped me find the perfect home."
               name="Mohamed Ali"

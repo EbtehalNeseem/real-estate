@@ -3,11 +3,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 import Layout from "./pages/Layout";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Home from "./pages/Home";
+import Auth from "./pages/AuthPage"
+import Properties from "./pages/Properties";
+import Contact from "./pages/Contact";
+import Wishlist from "./pages/Wishlist";
+import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import DashboardLayout from "./pages/DashboardLayout";
-import Properties from "./pages/Properties";
 import ManageProperties from "./pages/ManageProperties";
 import EditProperty from "./pages/EditProperty";
 import AddProperty from "./pages/AddProperty";
@@ -15,7 +18,7 @@ import AddProperty from "./pages/AddProperty";
 import { useState, createContext, useMemo } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-
+import ProtectedRoute from "./components/ProtectedRoutes";
 
 
 export const ColorModeContext = createContext({ toggleColorMode: () => { } });
@@ -57,10 +60,21 @@ function App() {
         <CssBaseline />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Layout />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="auth" element={<Auth />} />
+              <Route path="login" element={<Auth />} />
+              <Route path="register" element={<Auth />} />
+              <Route path="properties" element={<Properties />} />
+              <Route path="wishlist" element={<Wishlist />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="about" element={<About />} />
+            </Route>
+            <Route path="/dashboard" element={
+              <ProtectedRoute>
+                <DashboardLayout />
+              </ProtectedRoute>
+            }>
               <Route index element={<Dashboard />} />
               <Route path="manage" element={<ManageProperties />} />
               <Route path="add" element={<AddProperty />} />

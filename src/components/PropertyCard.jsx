@@ -1,11 +1,14 @@
 import React from "react";
 import {
   Card, CardHeader, IconButton, CardMedia, CardContent,
-  CardActions, Typography, Collapse, Chip, Box , Button
+  CardActions, Typography, Collapse, Chip, Box, Button
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+import { addToWishlist, removeFromWishlist } from "../js/wishlist";
+import { useWishlist } from "../hooks/useWishlist";
 
 // ----------- Expand Icon -----------
 const ExpandMore = styled((props) => {
@@ -19,12 +22,28 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
+
 // ----------- Main Component -----------
-export default function PropertyCard({ title, price, image, location , description }) {
+export default function PropertyCard({ title, price, image, location, description }) {
   const [expanded, setExpanded] = React.useState(false);
   const [liked, setLiked] = React.useState(false);
+  const { wishlistItems, removeItem, fetchWishlist } = useWishlist();
 
   const handleExpandClick = () => setExpanded(!expanded);
+  useEffect(() => {
+    setLiked(wishlistItems.some(item => item.id === property.id));
+  }, [wishlistItems, property.id]);
+
+  const toggleWishlist = async () => {
+    if (liked) {
+      const wishlistItem = wishlistItems.find(item => item.id === property.id);
+      if (wishlistItem) await removeItem(wishlistItem.wishlistId);
+    } else {
+      await addToWishlist(property.userId, property.id);
+      fetchWishlist();
+    }
+    setLiked(!liked);
+  };
 
   return (
     <Card
@@ -71,7 +90,7 @@ export default function PropertyCard({ title, price, image, location , descripti
 
       <CardHeader
         title={title}
-        sx={{ fontWeight: 600, fontSize: "0.1rem" , margin: 0 }}
+        sx={{ fontWeight: 600, fontSize: "0.1rem", margin: 0 }}
       />
       <CardContent>
         <Typography
@@ -83,7 +102,7 @@ export default function PropertyCard({ title, price, image, location , descripti
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
             margin: 0,
-          paddingY: 0,
+            paddingY: 0,
           }}
         >
           {location}
@@ -93,21 +112,22 @@ export default function PropertyCard({ title, price, image, location , descripti
       {/* -------- ACTIONS -------- */}
       <CardActions disableSpacing>
         <IconButton
-          onClick={() => setLiked(!liked)}
+          onClick={toggleWishlist}
           sx={{
             transition: "0.2s",
             transform: liked ? "scale(1.2)" : "scale(1)"
           }}
         >
+
           <FavoriteIcon sx={{ color: liked ? "red" : "grey" }} />
         </IconButton>
-         <Button variant="contained" sx={{ background: "var(--secondary)" }}>
-            Book a visit
-          </Button>
+        <Button variant="contained" sx={{ background: "var(--secondary)" }}>
+          Book a visit
+        </Button>
         <ExpandMore expand={expanded} onClick={handleExpandClick}>
           <ExpandMoreIcon />
         </ExpandMore>
-          
+
       </CardActions>
 
       {/* -------- DESCRIPTION -------- */}
