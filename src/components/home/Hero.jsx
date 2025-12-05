@@ -1,5 +1,5 @@
 import { Box, Button, Typography, TextField } from "@mui/material";
-import image from "../assets/1d26526d3571137921e395ce91b350e9.jpg"
+import image from "../../assets/1d26526d3571137921e395ce91b350e9.jpg"
 
 export default function Hero() {
   return (
@@ -14,7 +14,7 @@ export default function Hero() {
       
       {/* Left Text */}
       <Box sx={{ maxWidth: "50%" }}>
-        <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
+        <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2  }}>
           Find Your Dream Home
         </Typography>
 

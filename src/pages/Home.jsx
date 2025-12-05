@@ -1,26 +1,27 @@
 import React from "react"
-
-import Hero from "../components/Hero"
-import FeaturedList from "../components/FeaturedList"
-import CategoriesList from "../components/CategoriesList"
-import Testimonials from "../components/Testimonials"
-import Gallery from "../components/Gallery"
-import About from "../components/About"
-import Contact from "../components/Contact"
-import Footer from "../components/Footer"
+import Hero from "../components/home/Hero"
+import FeaturedList from "../components/home/FeaturedList"
+import Testimonials from "../components/home/Testimonials"
+import Gallery from "../components/home/Gallery"
+import About from "../components/home/About"
+import Contact from "../components/home/Contact"
+import Footer from "../components/home/Footer"
+import Blog from "../components/home/Blog"
 
 
 export default function Home() {
   return (
-    <div className="px-10 ">
+    <>
+    <div className="px-10 bg-color-[--secondary]" >
       <Hero />
       <FeaturedList />
-      <CategoriesList />
+      <Blog/>
       <About />
       <Testimonials />
       <Contact />
-      <Gallery />
-      <Footer />
     </div>
+    <Gallery />
+    <Footer />
+    </>
   )
 }

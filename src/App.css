@@ -1,9 +1,33 @@
 :root {
   --primary: #036103 ;
-  --secondary: #2e7d32 ;
+  --secondary:#11410f;
   --light: #3da042;
   --bg: #f8f4ef ;
-  --accent: #034b03 ;
+  --accent: #033101ff ;
+  --beige: #e2e2c1;
 }
 
+.swiper-pagination-bullet {
+  background: var(--light) !important;     
+  opacity: 1 !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  transition: 0.3s;
+}
 
+.swiper-pagination-bullet-active {
+  background: var(--light) !important;  
+  width: 25px !important;          
+  border-radius: 12px !important;
+}
+
+.swiper-pagination {
+  bottom: -1px !important;   
+}
+
+@media (min-width: 768px) {
+  .swiper-pagination {
+    bottom: -1px !important;
+  }
+}

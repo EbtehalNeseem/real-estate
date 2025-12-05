@@ -1,3 +1,9 @@
+:root {
+  --primary: #036103 ;
+  --secondary:#11410f;
+  --light: #3da042;
+  --bg: #f8f4ef ;
+  --accent: #033101ff ;
+}
+
 @import "tailwindcss";
-
-

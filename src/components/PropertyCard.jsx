@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Card, CardHeader, IconButton, CardMedia, CardContent,
-  CardActions, Typography, Collapse, Chip, Box
+  CardActions, Typography, Collapse, Chip, Box , Button
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -101,10 +101,13 @@ export default function PropertyCard({ title, price, image, location , descripti
         >
           <FavoriteIcon sx={{ color: liked ? "red" : "grey" }} />
         </IconButton>
+         <Button variant="contained" sx={{ background: "var(--secondary)" }}>
+            Book a visit
+          </Button>
         <ExpandMore expand={expanded} onClick={handleExpandClick}>
           <ExpandMoreIcon />
         </ExpandMore>
-
+          
       </CardActions>
 
       {/* -------- DESCRIPTION -------- */}
