@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import {
   Card, CardHeader, IconButton, CardMedia, CardContent,
   CardActions, Typography, Collapse, Chip, Box, Button
@@ -24,15 +25,15 @@ const ExpandMore = styled((props) => {
 
 
 // ----------- Main Component -----------
-export default function PropertyCard({ title, price, image, location, description }) {
+export default function PropertyCard({ id ,title, price, image, location, description }) {
   const [expanded, setExpanded] = React.useState(false);
   const [liked, setLiked] = React.useState(false);
   const { wishlistItems, removeItem, fetchWishlist } = useWishlist();
 
   const handleExpandClick = () => setExpanded(!expanded);
   useEffect(() => {
-    setLiked(wishlistItems.some(item => item.id === property.id));
-  }, [wishlistItems, property.id]);
+    setLiked(wishlistItems.some(item => item.id === id));
+  }, [wishlistItems, id]);
 
   const toggleWishlist = async () => {
     if (liked) {
