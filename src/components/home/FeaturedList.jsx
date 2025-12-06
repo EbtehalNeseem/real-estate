@@ -27,7 +27,7 @@ export default function FeaturedList() {
     }, []);
 
     return (
-        <Box sx={{ padding: "50px 5%" }}>
+        <Box sx={{ paddingX: "50px" }}>
             <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 ,color:"var(--accent)" }}>
                 Featured List   
             </Typography>

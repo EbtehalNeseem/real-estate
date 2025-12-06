@@ -1,37 +1,28 @@
-import { useState ,useContext } from "react";
-import { AppBar, Toolbar, IconButton, Drawer, Box, Button, Typography } from "@mui/material";
+import { useState, useContext } from "react";
+import { AppBar, Toolbar, IconButton, Drawer, Box, Button, Avatar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
-import Logo from "../assets/logo.png"
+import Logo from "/logo.png"
 import { ColorModeContext } from "../App";
-import MaterialUISwitch from "./MaterialUISwitch"; 
+import MaterialUISwitch from "./MaterialUISwitch";
 export default function Header() {
   const [open, setOpen] = useState(false);
-   const navigate = useNavigate();
-    const colorMode = useContext(ColorModeContext);
+  const navigate = useNavigate();
+  const colorMode = useContext(ColorModeContext);
 
-  const navLinks = ["Home", "Properties", "Wishlist", "Contact","About"];
-//   const scrollToSection = (id) => {
-//   if (window.location.pathname !== "/") {
-//     navigate("/", { state: { scrollTo: id } });
-//   } else {
-//     const element = document.getElementById(id);
-//     if (element) {
-//       element.scrollIntoView({ behavior: "smooth" });
-//     }
-//   }
-// };
-
+  const navLinks = ["Home", "Properties", "Wishlist", "Contact", "About"];
   return (
     <div className="h-20">
       {/* Top Nav */}
-      <AppBar position="fixed" sx={{ background: "#fff", paddingY: 1 , paddingX: 4 }}>
+      <AppBar position="fixed" sx={{ background: "#036103", paddingY: 1, paddingX: 4 }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           {/* Logo */}
-          <Typography onClick={() => navigate("/")}  variant="h5" sx={{ fontWeight: "bold", letterSpacing: 1, color: "var(--primary)", display: "flex", alignItems: "center" }}>
-            <img className="w-30 h-15 object-contain" src={Logo} alt="" />
-           UrbanGate
-          </Typography>
+          <Box sx={{ display: "flex" }}>
+            <Avatar sx={{ width: 50, height: 50 }} src="/logo.png" alt="" />
+            <Button onClick={() => navigate("/Home")} sx={{ fontWeight: "bold", fontSize: 20, letterSpacing: 2, color: "#e2e2c1" }}>
+              UrbanGate
+            </Button>
+          </Box>
 
           {/* Desktop Menu */}
           <Box sx={{ width: "60%", display: { xs: "none", md: "flex" }, justifyContent: "space-between" }}>
@@ -39,7 +30,7 @@ export default function Header() {
               <Button
                 key={item}
                 sx={{
-                  color: "var(--secondary)",
+                  color: "#e2e2c1",
                   fontSize: "16px",
                   fontWeight: "bold",
                   textTransform: "none",
@@ -48,11 +39,11 @@ export default function Header() {
                   "&::after": {
                     content: '""',
                     position: "absolute",
-                    right: 0,
+                    left: 0,
                     bottom: -2,
                     width: "0%",
                     height: "2px",
-                    backgroundColor: "var(--primary)",
+                    backgroundColor: "#e2e2c1",
                     transition: "width 0.3s ease",
                   },
                   "&:hover::after": {
@@ -60,21 +51,25 @@ export default function Header() {
                   },
                 }}
                 onClick={() => navigate("/" + item)}
-                >
+              >
                 {item}
               </Button>
             ))}
 
-             <MaterialUISwitch onChange={colorMode.toggleColorMode} />
+            <MaterialUISwitch onChange={colorMode.toggleColorMode} />
             <Button
               variant="contained"
               sx={{
-                background: "var(--secondary)",
-                color: "white",
+                background: "var(--beige)",
+                color: "var(--accent)",
                 fontWeight: "bold",
-                "&:hover": { background: "var(--primary)" },
+                "&:hover": {
+                  background: "var(--accent)",
+                  color: "var(--beige)",
+                  transition: " 0.5s ease-in-out"
+                },
               }}
-              onClick={() => navigate("/login") }
+              onClick={() => navigate("/login")}
             >
               Login
             </Button>
@@ -82,7 +77,7 @@ export default function Header() {
 
 
           {/* Mobile Menu  */}
-           <MaterialUISwitch onChange={colorMode.toggleColorMode} sx={{display: { xs: "block", md: "none" },}} />
+          <MaterialUISwitch onChange={colorMode.toggleColorMode} sx={{ display: { xs: "block", md: "none" }, }} />
           <Box sx={{ display: "flex", gap: 3 }}>
             <Button
               variant="contained"
@@ -93,7 +88,7 @@ export default function Header() {
                 fontWeight: "bold",
                 "&:hover": { background: "var(--primary)" },
               }}
-              onClick={() => navigate("/login") }
+              onClick={() => navigate("/login")}
             >
               Login
             </Button>
@@ -129,6 +124,11 @@ export default function Header() {
                 textTransform: "none",
                 "&:hover": { color: "black" }
               }}
+              onClick={() => {
+                navigate("/" + item),
+              setOpen(false)
+              }
+              }
             >
               {item}
             </Button>

@@ -1,5 +1,5 @@
 import { Box, Button, Typography, TextField } from "@mui/material";
-import image from "../../assets/1d26526d3571137921e395ce91b350e9.jpg"
+import image from "../../assets/0866a3279b9b69e3ff11415cbfcf47a3.jpg"
 
 export default function Hero() {
   return (
@@ -8,7 +8,7 @@ export default function Hero() {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "50px 5%",
+        paddingX: "50px ",
       }}
     >
       
@@ -19,21 +19,21 @@ export default function Hero() {
         </Typography>
 
         <Typography sx={{ color: "gray", mb: 3 }}>
-          Discover the best properties tailored for your needs. Buy, sell, or rent with confidence.
+          Discover the best properties tailored for your needs. Buy or rent with confidence.
         </Typography>
 
         <Box sx={{ display: "flex", gap: 2 }}>
           <TextField label="Location" size="small" />
           <TextField label="Type" size="small" />
-          <Button variant="contained" sx={{ background: "var(--secondary)" }}>
+          <Button variant="contained" sx={{ background: "var(--primary)" }}>
             Search
           </Button>
         </Box>
       </Box>
 
       {/* Right Image */}
-      <Box sx={{ width: "45%" }}>
-        <img src={image} alt="" />
+      <Box sx={{ width: "50%" ,paddingLeft:"20px" , borderRadius:"50%" }}>
+        <img src={image} alt="" className="rounded-[30px] object-cover" />
       </Box>
 
     </Box>

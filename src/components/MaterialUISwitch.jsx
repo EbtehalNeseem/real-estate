@@ -22,7 +22,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
         opacity: 1,
         backgroundColor: '#8796A5',
         ...theme.applyStyles('dark', {
-          backgroundColor: 'var(--secondary)',
+          backgroundColor: 'var(--primary)',
         }),
       },
     },

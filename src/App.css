@@ -1,10 +1,15 @@
 :root {
   --primary: #036103 ;
-  --secondary:#11410f;
   --light: #3da042;
-  --bg: #f8f4ef ;
   --accent: #033101ff ;
   --beige: #e2e2c1;
+}
+
+[data-theme="dark"] {
+  --primary: #e2e2c1 ;
+  --light:#3da042 ;
+  --accent:#e2e2c1  ;
+  --beige:#033101ff ;
 }
 
 .swiper-pagination-bullet {
@@ -14,6 +19,7 @@
   height: 10px !important;
   border-radius: 50% !important;
   transition: 0.3s;
+
 }
 
 .swiper-pagination-bullet-active {

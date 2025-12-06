@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabase } from "../services/supabase";
+import { supabase } from "../../services/supabase";
 import { useNavigate } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 
@@ -41,8 +41,8 @@ export default function AddProperty() {
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-[var(--primary)] text-2xl font-semibold mb-6">
+    <div className="p-6 pt-5">
+      <h2 className="text-[var(--primary)] text-2xl font-semibold mb-5">
         Add New Property
       </h2>
 

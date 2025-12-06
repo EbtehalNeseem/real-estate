@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {supabase} from "../services/supabase";
+import {supabase} from "../../services/supabase";
 import { Pencil, Trash2 } from "lucide-react";
 
 export default function ManageProperties() {

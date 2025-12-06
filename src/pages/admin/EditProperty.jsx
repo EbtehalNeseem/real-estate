@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { supabase } from "../services/supabase";
+import { supabase } from "../../services/supabase";
 import { ChevronDown } from "lucide-react";
 
 export default function EditProperty() {
@@ -73,8 +73,8 @@ export default function EditProperty() {
   }
 
   return (
-    <div className="p-6 ">
-      <h2 className="text-[var(--primary)] text-2xl font-semibold mb-6">
+    <div className="p-6 pt-5 ">
+      <h2 className="text-[var(--primary)] text-2xl font-semibold mb-5">
         Edit Property
       </h2>
 

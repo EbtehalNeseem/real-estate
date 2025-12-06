@@ -1,40 +1,58 @@
 import { supabase } from "../services/supabase";
 
+// fetch user for all functions
+async function getCurrentUserId() {
+  const { data: { user } } = await supabase.auth.getUser();
+  return user?.id || null;
+}
+
 // Fetch wishlist for current user
 export async function getWishlist() {
-  const user = supabase.auth.getUser(); 
-  const userId = (await user).data.user?.id;
+  const userId = await getCurrentUserId();
   if (!userId) return { items: [] };
 
   const { data, error } = await supabase
     .from("wishlist")
-    .select("*, product(*)") 
+    .select("id, property:properties(*)")
     .eq("user_id", userId);
 
   if (error) throw error;
 
-  return { items: data.map((row) => ({ ...row.product, wishlistId: row.id })) };
+  return {
+    items: data.map((row) => ({
+      ...row.property,
+      wishlistId: row.id,
+    })),
+  };
 }
+
+
 // Add item to wishlist
-export async function addToWishlist(productId) {
-  const { data: { user } } = await supabase.auth.getUser();
-  const userId = user?.id;
+export async function addToWishlist(propertyId) {
+  const userId = await getCurrentUserId();
   if (!userId) throw new Error("User not logged in");
 
   const { data, error } = await supabase
     .from("wishlist")
-    .insert([{ user_id: userId, product_id: productId }])
-    .select(); // optional: return inserted row
+    .insert({ user_id: userId, property_id: propertyId });
 
   if (error) throw error;
-
-  return data[0]; // return the added wishlist item
+  return data;
 }
 
 
 // Remove item from wishlist
-export async function removeFromWishlist(wishlistId) {
-  const { error } = await supabase.from("wishlist").delete().eq("id", wishlistId);
+export async function removeFromWishlist(propertyId) {
+  const userId = await getCurrentUserId();
+  if (!userId) throw new Error("User not logged in");
+
+  const { error } = await supabase
+    .from("wishlist")
+    .delete()
+    .eq("user_id", userId)
+    .eq("property_id", propertyId);
+
   if (error) throw error;
+
   return true;
 }

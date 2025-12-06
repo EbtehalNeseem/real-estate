@@ -22,10 +22,12 @@ export default function BlogCard({ image, title, text }) {
           width: "100%",
           height: 180,
           objectFit: "cover",
+          borderTopLeftRadius:2,
+          borderTopRightRadius:2,
         }}
       />
       <Box sx={{ padding: 2 }}>
-        <Typography fontWeight="bold">{title}</Typography>
+        <Typography fontWeight="bold" sx={{color:"#036103"}}>{title}</Typography>
         <Typography sx={{ fontSize: "14px", color: "gray", mt: 1 }}>
           {text}
         </Typography>

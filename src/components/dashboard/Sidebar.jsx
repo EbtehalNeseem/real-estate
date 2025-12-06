@@ -45,16 +45,16 @@ export default function Sidebar() {
       {/* Header */}
       <div className="flex items-center justify-around py-4 text-white">
         {isSidebarOpen && (
-          <h1 className="text-white font-bold text-lg tracking-wider">
+          <h3 className="text-white font-bold tracking-wider">
             Admin Panel
-          </h1>
+          </h3>
         )}
 
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="py-2 rounded-xl hover:bg-[--light] text-light transition-colors cursor-pointer "
+          className="p-4 rounded-xl hover:bg-[--light] text-light transition-colors cursor-pointer "
         >
-          <Menu size={22} className="text-white" />
+          <Menu size={22} className="text-white " />
         </button>
       </div>
 

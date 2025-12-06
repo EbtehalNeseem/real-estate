@@ -1,4 +1,8 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { IconButton, InputAdornment, OutlinedInput} from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 export default function LoginForm({
   loginData,
@@ -9,6 +13,19 @@ export default function LoginForm({
   setIsLogin,
   loading,
 }) {
+
+  const [showPassword, setShowPassword] = useState(false);
+  
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+  
+    const handleMouseDownPassword = (event) => {
+      event.preventDefault();
+    };
+  
+    const handleMouseUpPassword = (event) => {
+      event.preventDefault();
+    };
+
   return (
     <motion.form
       key="login-form"
@@ -37,21 +54,38 @@ export default function LoginForm({
       )}
 
       {/* Password */}
-      <input
-        type="password"
-        placeholder="Password"
-        value={loginData.password}
-        className={`p-3 rounded bg-white shadow w-full ${
-          errors.password ? "border border-red-500" : ""
-        }`}
-        onChange={(e) => {
+      <OutlinedInput
+          id="outlined-adornment-password"
+          placeholder="Password"
+          type={showPassword ? 'text' : 'password'}
+          endAdornment={
+            <InputAdornment position="end" className="pr-5">
+              <IconButton
+                aria-label={
+                  showPassword ? 'hide the password' : 'display the password'
+                }
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                onMouseUp={handleMouseUpPassword}
+                edge="end"
+              >
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          }
+          value={loginData.password}
+          sx={{":focus":{outline:"black"}}}
+          className={`p-1 rounded bg-white shadow w-full focus:outline-black focus:outline-2 focus:outline-offset-2   ${errors.password ? "border border-red-500" : ""
+            }`}
+           onChange={(e) => {
           setLoginData({ ...loginData, password: e.target.value });
           clearError("password");
-        }}
-      />
-      {errors.password && (
+          }}
+        />
+         {errors.password && (
         <p className="text-red-500 text-sm">{errors.password}</p>
       )}
+     
 
       {/* Form error */}
       {errors.form && (

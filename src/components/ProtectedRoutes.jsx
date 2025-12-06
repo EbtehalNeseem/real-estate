@@ -8,7 +8,7 @@ export default function ProtectedRoute({ children, role }) {
 
   if (!user) return <Navigate to="/auth" replace />;
 
-  // ROLE CHECK (optional)
+  // ROLE CHECK
   if (role && user.user_metadata?.role !== role) {
     return <Navigate to="/unauthorized" replace />;
   }

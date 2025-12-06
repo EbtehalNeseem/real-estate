@@ -1,12 +1,12 @@
-import useWishlist from "../hooks/useWishlist";
-import WishlistItem from "../components/WishlistItem";
+import useWishlist from "../../hooks/useWishlist";
+import WishlistItem from "../../components/wishlist/WishlistItem";
 
 export default function WishlistPage() {
   const { wishlistItems, isLoading, error, removeItem } = useWishlist();
 
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-2xl font-bold text-primary mb-4">My Wishlist</h1>
+    <div className="container mx-auto p-6 h-screen">
+      <h1 className="text-2xl font-bold text-[var(--primary)] mb-4">My Wishlist</h1>
 
       {isLoading && <p>Loading wishlist...</p>}
       {error && <p>Failed to load wishlist</p>}

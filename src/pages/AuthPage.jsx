@@ -59,7 +59,13 @@ export default function AuthPage() {
         </AnimatePresence>
       </motion.div>
 
-      {/* Mobile Form */}
+     
+    </div>
+  );
+}
+
+
+ {/* Mobile Form */}
      
 {/* 
       <motion.div
@@ -95,6 +101,3 @@ export default function AuthPage() {
           )}
         </AnimatePresence>
       </motion.div> */}
-    </div>
-  );
-}

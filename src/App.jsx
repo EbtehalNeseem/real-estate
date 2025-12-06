@@ -2,18 +2,18 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
-import Layout from "./pages/Layout";
-import Home from "./pages/Home";
+import Layout from "./pages/user/Layout";
+import Home from "./pages/user/Home";
 import Auth from "./pages/AuthPage"
-import Properties from "./pages/Properties";
-import Contact from "./pages/Contact";
-import Wishlist from "./pages/Wishlist";
-import About from "./pages/About";
-import Dashboard from "./pages/Dashboard";
-import DashboardLayout from "./pages/DashboardLayout";
-import ManageProperties from "./pages/ManageProperties";
-import EditProperty from "./pages/EditProperty";
-import AddProperty from "./pages/AddProperty";
+import Properties from "./pages/user/Properties";
+import Contact from "./pages/user/Contact";
+import Wishlist from "./pages/user/Wishlist";
+import About from "./pages/user/About";
+import Dashboard from "./pages/admin/Dashboard";
+import DashboardLayout from "./pages/admin/DashboardLayout";
+import ManageProperties from "./pages/admin/ManageProperties";
+import EditProperty from "./pages/admin/EditProperty";
+import AddProperty from "./pages/admin/AddProperty";
 
 import { useState, createContext, useMemo } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -29,7 +29,12 @@ function App() {
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prev) => (prev === "light" ? "dark" : "light"));
+        setMode((prev) => {
+        const newMode = prev === "light" ? "dark" : "light";
+   document.documentElement.setAttribute("data-theme", newMode);
+
+        return newMode;
+      });
       },
     }),
     []
@@ -61,7 +66,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
+              <Route index element={<Home />}  />
+              <Route path="home" element={<Home />}/>
               <Route path="auth" element={<Auth />} />
               <Route path="login" element={<Auth />} />
               <Route path="register" element={<Auth />} />
@@ -71,9 +77,9 @@ function App() {
               <Route path="about" element={<About />} />
             </Route>
             <Route path="/dashboard" element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <DashboardLayout />
-              </ProtectedRoute>
+              // </ProtectedRoute> 
             }>
               <Route index element={<Dashboard />} />
               <Route path="manage" element={<ManageProperties />} />

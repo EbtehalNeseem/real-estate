@@ -15,13 +15,13 @@ export default function Gallery() {
    
       <Grid container >
         {images.map((img, i) => (
-          <Grid key={i}>
+          <Grid sx={{xs:{display:"none"}}} size={{lg:2}} key={i}>
             <Box
               component="img"
               src={img}
               sx={{
                 width: "100%",
-                height: 159,
+                maxHeight:100,
                 objectFit: "cover",
                 overflowX:"scroll"
               }}
