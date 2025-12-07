@@ -1,5 +1,5 @@
 import { Box, Typography, Grid, Button, Avatar } from "@mui/material";
-import { MDBIcon } from 'mdb-react-ui-kit';
+import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn, FaTiktok } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -9,25 +9,22 @@ export default function Footer() {
           <span>Get connected with us on social networks:</span>
         </div>
 
-        <div>
+        <div className="d-flex">
           <a href='' className='me-4 text-[#e2e2c1] text-reset'>
-            <MDBIcon className=" hover:scale-130 transition all duration-400 ease-in-out" fab icon="facebook-f" />
+          <FaFacebookF className=" hover:scale-130 transition all duration-400 ease-in-out" />
           </a>
-          <a href='' className='me-4 text-reset'>
-            <MDBIcon className=" hover:scale-130 transition all duration-400 ease-in-out" fab icon="twitter" />
-          </a>
-          <a href='' className='me-4 text-reset'>
-            <MDBIcon className=" hover:scale-130 transition all duration-400 ease-in-out" fab icon="google" />
-          </a>
-          <a href='' className='me-4 text-reset'>
-            <MDBIcon className=" hover:scale-130 transition all duration-400 ease-in-out" fab icon="instagram" />
-          </a>
-          <a href='' className='me-4 text-reset'>
-            <MDBIcon className=" hover:scale-130 transition all duration-400 ease-in-out" fab icon="linkedin" />
-          </a>
-          <a href='' className='me-4 text-reset'>
-            <MDBIcon className=" hover:scale-130 transition all duration-400 ease-in-out" fab icon="github" />
-          </a>
+          <a href='' className='me-4 text-[#e2e2c1] text-reset'>
+        <FaInstagram className=" hover:scale-130 transition all duration-400 ease-in-out" />
+        </a>
+        <a href='' className='me-4 text-[#e2e2c1] text-reset'>
+        <FaYoutube className=" hover:scale-130 transition all duration-400 ease-in-out"  />
+        </a>
+        <a href='' className='me-4 text-[#e2e2c1] text-reset'>
+        <FaLinkedinIn className=" hover:scale-130 transition all duration-400 ease-in-out" />
+        </a>
+        <a href='' className='me-4 text-[#e2e2c1] text-reset'>
+        <FaTiktok className=" hover:scale-130 transition all duration-400 ease-in-out"  />
+        </a>
         </div>
       </section>
       <Grid container spacing={8}>
