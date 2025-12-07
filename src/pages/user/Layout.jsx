@@ -2,9 +2,9 @@ import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer"
-import LoadingPage from "../LoadingPage";
+import LoadingPage from "./LoadingPage";
 
-export default function DashboardLayout() {
+export default function Layout() {
 
   const [loading, setLoading] = useState(true);
 
