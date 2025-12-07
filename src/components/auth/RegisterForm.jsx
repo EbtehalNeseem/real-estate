@@ -14,7 +14,6 @@ export default function RegisterForm({
   loading,
 }) {
 
-
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -100,9 +99,6 @@ export default function RegisterForm({
          {errors.password && (
         <p className="text-red-500 text-sm">{errors.password}</p>
       )}
-    
-
-
 
       {/* Confirm Password */}
        <OutlinedInput
@@ -138,11 +134,11 @@ export default function RegisterForm({
       )}
 
 
-      <button className="mt-4 p-3 rounded bg-[var(--primary)] text-[var(--beige)] hover:bg-[var(--primary)]/70 font-bold">
+      <button className=" mt-2 p-3 rounded bg-[var(--primary)] text-[var(--beige)] hover:bg-[var(--primary)]/70 font-bold">
         {loading ? "Loading..." : "Register"}
       </button>
 
-      <p className="text-[var(--primary)] mt-3">
+      <p className="text-[var(--primary)] ">
         Already have an account?
         <span
           className="cursor-pointer font-bold ml-1 hover:text-[var(--light)]"

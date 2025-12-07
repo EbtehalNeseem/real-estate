@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "../services/supabase";
 
 // ---------- Email Validation ----------
@@ -15,8 +16,12 @@ const strongPassword = (password) => {
 };
 
 export function useAuthForms() {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
+  // ------- DATA -------
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -28,9 +33,6 @@ export function useAuthForms() {
     password: "",
     confirmPassword: "",
   });
-
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
 
   // ------- VALIDATION -------
   const validateLogin = () => {
@@ -69,7 +71,7 @@ export function useAuthForms() {
     });
   };
 
-  // ------- LOGIN -------
+  // ------- LOGIN HANDLER  -------
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     if (!validateLogin()) return;
@@ -77,14 +79,30 @@ export function useAuthForms() {
     setLoading(true);
     setErrors({});
 
-    const { error } = await supabase.auth.signInWithPassword(loginData);
+    const { data: authUser, error } = await supabase.auth.signInWithPassword(loginData);
 
-    if (error) setErrors({ form: error.message });
+    if (error) {
+      setErrors({ form: error.message });
+      setLoading(false);
+      return;
+    }
 
-    setLoading(false);
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", authUser.user.id)
+      .single();
+
+    // redirect based on role
+    if (profile?.role === "admin") {
+      navigate("/dashboard");
+    } else {
+      navigate("/");
+    }
+
   };
 
-  // ------- REGISTER -------
+  // ------- REGISTER HANDLER-------
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     if (!validateRegister()) return;
@@ -114,11 +132,27 @@ export function useAuthForms() {
 
       if (profileErr) {
         setErrors({ form: profileErr.message });
+        setLoading(false);
       }
     }
 
-    setLoading(false);
+    // fetch user role from profiles table
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", authUser.user.id)
+      .single();
+
+    // redirect based on role
+    if (profile?.role === "admin") {
+      navigate("/dashboard");
+    } else {
+      navigate("/home");
+    }
   };
+
+
+
 
   return {
     isLogin,

@@ -76,14 +76,14 @@ export default function ManageProperties() {
                 <td className="p-4 flex items-center gap-3">
                   <Link
                     to={`/dashboard/edit/${p.id}`}
-                    className="px-2 pt-5 "
+                    className="px-2 py-4"
                   >
                     <Pencil size={18} className="text-[var(--light)]  hover:text-[var(--accent)]" />
                   </Link>
 
                   <button
                     onClick={() => handleDelete(p.id)}
-                    className="px-2 pt-5"
+                    className="p-2"
                   >
                     <Trash2 size={18} className="text-red-600 hover:text-red-900" />
                   </button>

@@ -41,7 +41,7 @@ export default function LoginForm({
         type="email"
         placeholder="Email"
         value={loginData.email}
-        className={`p-3 rounded bg-white shadow w-full ${
+        className={`p-3 mt-3 rounded bg-white shadow w-full ${
           errors.email ? "border border-red-500" : ""
         }`}
         onChange={(e) => {
@@ -92,14 +92,14 @@ export default function LoginForm({
         <p className="text-red-500 text-sm mt-1">{errors.form}</p>
       )}
 
-      <button className="mt-4 p-3 rounded bg-[var(--primary)] text-[var(--beige)] hover:bg-[var(--primary)]/70 font-bold">
+      <button className="mt-2 p-3 rounded bg-[var(--primary)] text-[var(--beige)] hover:bg-[var(--primary)]/70 font-bold">
         {loading ? "Loading..." : "Login"}
       </button>
 
-      <p className="text-[var(--primary)] mt-3">
+      <p className="text-[var(--primary)] ">
         Don't have an account?
         <span
-          className="cursor-pointer font-bold ml-1 hover:text-[var(--light)]"
+          className="cursor-pointer font-bold ml-2 hover:text-[var(--light)]"
           onClick={() => setIsLogin(false)}
         >
           Register

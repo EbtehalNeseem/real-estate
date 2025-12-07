@@ -30,7 +30,7 @@ export default function AuthPage() {
         transition={{ duration: 0.7 }}
         className="w-full md:w-1/2 h-full flex flex-col justify-center px-10 md:px-20 bg-[var(--beige)]"
       >
-        <h1 className="text-3xl font-bold text-[var(--primary)] mb-6">
+        <h1 className="text-3xl font-bold text-[var(--primary)] mb-3">
           {isLogin ? "Welcome Back" : "Create Account"}
         </h1>
 
