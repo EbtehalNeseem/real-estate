@@ -9,7 +9,7 @@ export default function Properties() {
 
   useEffect(() => {
     const fetchdata = async () => {
-      const { data, error } = await supabase.from("Properties").select("*");
+      const { data, error } = await supabase.from("properties").select("*");
 
       if (error) { console.log("❌ Connection Error:", error); }
       else {

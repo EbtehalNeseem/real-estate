@@ -28,5 +28,5 @@ export default function useWishlist() {
     setWishlistItems((prev) => prev.filter((item) => item.wishlistId !== wishlistId));
   };
 
-  return { wishlistItems, isLoading, error, removeItem };
+  return { wishlistItems, isLoading, error, removeItem ,fetchWishlist };
 }

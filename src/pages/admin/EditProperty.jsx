@@ -23,7 +23,7 @@ export default function EditProperty() {
   useEffect(() => {
     const fetchProperty = async () => {
       const { data, error } = await supabase
-        .from("Properties")
+        .from("properties")
         .select("*")
         .eq("id", id)
         .single();
@@ -47,7 +47,7 @@ export default function EditProperty() {
     setUpdating(true);
 
     const { error } = await supabase
-      .from("Properties")
+      .from("properties")
       .update({
         title: formData.title,
         description: formData.description,

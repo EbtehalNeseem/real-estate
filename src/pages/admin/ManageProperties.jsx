@@ -9,7 +9,7 @@ export default function ManageProperties() {
   useEffect(() => {
     const fetchData = async () => {
       const { data, error } = await supabase
-        .from("Properties")
+        .from("properties")
         .select("*");
 
       if (!error) setProperties(data);
@@ -23,7 +23,7 @@ export default function ManageProperties() {
     if (!confirm("Are you sure you want to delete this property?")) return;
 
     const { error } = await supabase
-      .from("Properties")
+      .from("properties")
       .delete()
       .eq("id", id);
 

@@ -4,29 +4,19 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn, FaTiktok } from "rea
 export default function Footer() {
   return (
     <Box sx={{ background: "#036103", color: "white", padding: "40px 5%" }}>
-      <section className='d-flex justify-content-center justify-content-lg-between py-4 '>
-        <div className='me-5 d-none d-lg-block'>
+      <Box sx={{ paddingY: 2,display: "flex",  justifyContent: "space-between" }}>
+        <Box className='me-5 d-none d-lg-block'>
           <span>Get connected with us on social networks:</span>
-        </div>
+        </Box>
 
-        <div className="d-flex">
-          <a href='' className='me-4 text-[#e2e2c1] text-reset'>
-          <FaFacebookF className=" hover:scale-130 transition all duration-400 ease-in-out" />
-          </a>
-          <a href='' className='me-4 text-[#e2e2c1] text-reset'>
-        <FaInstagram className=" hover:scale-130 transition all duration-400 ease-in-out" />
-        </a>
-        <a href='' className='me-4 text-[#e2e2c1] text-reset'>
-        <FaYoutube className=" hover:scale-130 transition all duration-400 ease-in-out"  />
-        </a>
-        <a href='' className='me-4 text-[#e2e2c1] text-reset'>
-        <FaLinkedinIn className=" hover:scale-130 transition all duration-400 ease-in-out" />
-        </a>
-        <a href='' className='me-4 text-[#e2e2c1] text-reset'>
-        <FaTiktok className=" hover:scale-130 transition all duration-400 ease-in-out"  />
-        </a>
-        </div>
-      </section>
+         <Box sx={{ width: 200 ,display: "flex",  justifyContent: "space-between" }}>
+          <FaFacebookF className="text-[20px] hover:scale-130 transition all duration-400 ease-in-out" />
+        <FaInstagram className="text-[20px] hover:scale-130 transition all duration-400 ease-in-out" />
+        <FaYoutube className="text-[20px] hover:scale-130 transition all duration-400 ease-in-out"  />
+        <FaLinkedinIn className="text-[20px] hover:scale-130 transition all duration-400 ease-in-out" />
+        <FaTiktok className="text-[20px] hover:scale-130 transition all duration-400 ease-in-out"  />
+        </Box>
+      </Box>
       <Grid container spacing={8}>
 
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>

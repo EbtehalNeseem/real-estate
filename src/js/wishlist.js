@@ -49,6 +49,7 @@ export async function removeFromWishlist(propertyId) {
   const { error } = await supabase
     .from("wishlist")
     .delete()
+    .eq("id" , wishlistId)
     .eq("user_id", userId)
     .eq("property_id", propertyId);
 
